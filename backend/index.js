@@ -34,9 +34,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 const mongoURI= 'mongodb://127.0.0.1:27017/Angular_01'
-const mongoAtlas = process.env.MONGO_ATLAS
+ 
 const mongolocal = process.env.MONGO_LOCAL
-const atlas = mongoAtlas
+const atlas = process.env.MONGO_ATLAS
 console.log('mongoAtlas-------->',mongolocal);
 // const atlas = 'mongodb+srv://ankit:localhost@cluster0.qyuq0z3.mongodb.net/new_Task03_admin?retryWrites=true&w=majority'
 
