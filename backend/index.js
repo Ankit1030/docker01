@@ -4,6 +4,7 @@ const path  = require('path')
 const cors = require('cors')
 const server = require('http').Server(app);
 const {initialize} = require('./utils/socket')
+const router = express.Router();
 require('dotenv').config();
 
 //-------------------------------------------------------
@@ -50,18 +51,18 @@ const mongo = mongoose.connect(atlas)
   app.get('/',(req,res)=>{
     res.send("Heloo this is my Forst nodejs App on server")
   })
-
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/login',login)
-app.use(verifyToken);
-app.use('/rides',Rides)
-app.use('/vehicles',vehicles)
-app.use('/city',city)
-app.use('/vehiclepricing',VehiclePricing)
-app.use('/country',country)
-app.use('/users',users)
-app.use('/drivers',drivers)
-app.use('/settings',Setting)
+app.use('/api', router);
+router.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+router.use('/login',login)
+router.use(verifyToken);
+router.use('/rides',Rides)
+router.use('/vehicles',vehicles)
+router.use('/city',city)
+router.use('/vehiclepricing',VehiclePricing)
+router.use('/country',country)
+router.use('/users',users)
+router.use('/drivers',drivers)
+router.use('/settings',Setting)
 
 
 
