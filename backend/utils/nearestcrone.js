@@ -15,7 +15,7 @@ const job = cron.schedule(
   },
   { scheduled: false }
 );
-job.start()
+job.start();
 const cronefn = async () => {
   try {
     const pipeline = [
@@ -104,7 +104,7 @@ const cronefn = async () => {
       },
       {
         $set: {
-              // oldDriver: "$driver",
+          // oldDriver: "$driver",
           driver: {
             $ifNull: [{ $arrayElemAt: ["$availableDrivers._id", 0] }, null],
           },
@@ -176,15 +176,16 @@ const cronefn = async () => {
 
     const AlldataArray = await CreateRideModel.aggregate(pipeline);
     if (AlldataArray.length === 0) {
-      return console.log(
-        "RETURNED NO RIDE FOUND------------------------------"
-      );
+      return;
+      // return console.log(
+      //   "RETURNED NO RIDE FOUND------------------------------"
+      // );
     }
 
     console.log("RESULT LENGTH IS ", AlldataArray.length);
     for (i = 0; i < AlldataArray.length; i++) {
       const data = AlldataArray[i];
-      console.log("DATA-->> ", [i], data);
+      // console.log("DATA-->> ", [i], data);
       if (data.oldDriver !== null) {
         const updateOldDriver = await DriverModel.findByIdAndUpdate(
           data.oldDriver,
@@ -461,7 +462,7 @@ const cronefn = async () => {
     //   // global.io.emit('crone',data)
     // }
   } catch (error) {
-    console.log("CRONE ERROR", error);
+    // console.log("CRONE ERROR", error);
   }
 
   // const data = await CreateRideModel.find({ridestatus:1, assign})
@@ -482,17 +483,17 @@ async function NoDriverAvailable(data) {
       { $set: { driver: null, assigntime: null, ridestatus: 2 } },
       { new: true, select: "_id ridestatus driverDetails" }
     );
-    console.log(
-      "IF capableFreeDriver++++++++++++++++++++++++++++++++++++++++++",
-      capableFreeDriver
-    );
+    // console.log(
+    //   "IF capableFreeDriver++++++++++++++++++++++++++++++++++++++++++",
+    //   capableFreeDriver
+    // );
 
     const senddata = {
       _id: data._id,
       driverDetails: null,
       ridestatus: 2,
     };
-    console.log("SEND HOLD data->>", senddata);
+    // console.log("SEND HOLD data->>", senddata);
     global.io.emit("HoldRide", senddata);
   } else {
     updateCreateRideModel = await CreateRideModel.findByIdAndUpdate(
@@ -513,7 +514,7 @@ async function NoDriverAvailable(data) {
       driverDetails: null,
       ridestatus: 0,
     };
-    console.log("ELSE capableFreeDriver-----------------------------------");
+    // console.log("ELSE capableFreeDriver-----------------------------------");
 
     global.io.emit("setNotification", global.incrementNotification());
 

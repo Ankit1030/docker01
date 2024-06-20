@@ -49,7 +49,7 @@ const cronefnsimple = async () => {
 
 
     const data = await CreateRideModel.aggregate(pipeline);
-    console.log("CRONE DATA-->>>", data);
+    // console.log("CRONE DATA-->>>", data);
     if (data.length === 1) {
       console.log("ONlu single data requesed", data[0]._id);
       const rideid = data[0]._id;
