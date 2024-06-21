@@ -51,7 +51,7 @@ const mongo = mongoose.connect(atlas)
   app.get('/',(req,res)=>{
     res.send("Heloo this is my Forst nodejs App on server")
   })
-// app.use('/api', router);
+app.use('/', router);
 router.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 router.use('/login',login)
 router.use(verifyToken);
