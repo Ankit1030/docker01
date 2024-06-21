@@ -1,4 +1,4 @@
-const port = 3200;
+const port = 443;
 const serverip1 = "13.201.115.173"
 // export const env  = {
 //     port : port,

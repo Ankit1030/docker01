@@ -7,10 +7,12 @@ location / {
    try_files $uri $uri/ /index.html;
  }
 
+
+
 }
 
 server {
- listen 3200;
+ listen 443;
 
  location / {
    proxy_pass http://localhost:3000/;
