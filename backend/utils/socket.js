@@ -25,7 +25,7 @@ const initialize = (server) => {
 
     global.io.on('connection', (socket)=>{
         // console.log("SOCKET",socket);
-        console.log("Connection established--------------****************", socket.id);
+        console.log("SOCKET SOCKET  SOCKET  SOCKET  SOCKET  SOCKET Connection established--------------****************", socket.id);
 
         socket.on("getNotification",async (data)=>{
             if(global.counter > 0){

@@ -6,12 +6,12 @@ const server = require('http').Server(app);
 const {initialize} = require('./utils/socket')
 const router = express.Router();
 require('dotenv').config();
+initialize(server);
 
 //-------------------------------------------------------
 
 // app.set(io,'io')
 //-------------------------------------------------------
-initialize(server);
 // const io = require("socket.io",server,{ cors : {origin : "*"}})
 
 
@@ -51,6 +51,7 @@ const mongo = mongoose.connect(atlas)
   app.get('/',(req,res)=>{
     res.send("Heloo this is my Forst nodejs App on server")
   })
+// app.use('/api', router);
 app.use('/', router);
 router.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 router.use('/login',login)

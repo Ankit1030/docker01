@@ -16,7 +16,7 @@ export class SocketService {
   constructor(){
     this.socket = io(this.uri)
     this.socket.on('connect', () => {
-      console.log('-------+++++++++ Socket connected successfully');
+      console.log('---------++++-+++++++++ Socket connected successfully');
     });
   }
 counter:number = 0;

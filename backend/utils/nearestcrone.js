@@ -186,12 +186,13 @@ const cronefn = async () => {
     for (i = 0; i < AlldataArray.length; i++) {
       const data = AlldataArray[i];
       // console.log("DATA-->> ", [i], data);
-      if (data.oldDriver !== null) {
+      if (data.oldDriver) {
         const updateOldDriver = await DriverModel.findByIdAndUpdate(
           data.oldDriver,
           { assign: 0 },
           { new: true }
         );
+        console.log("PREVIOUS DRIVER IS FREEED NOW ---------->>>>>>>>>");
       }
       let senddata;
       let updateCreateRideModel,
