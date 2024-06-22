@@ -1,5 +1,5 @@
-const port = 443;
-const serverip1 = "13.201.115.173"
+const port = 3000;
+const serverip1 = "13.233.225.201"
 // export const env  = {
 //     port : port,
 //     backendUrl:`/api`,
@@ -7,8 +7,8 @@ const serverip1 = "13.201.115.173"
 // }
 export const env  = {
     port : port,
-    backendUrl:`http://${serverip1}:${port}/api`,
-    socketUrl : `ws://${serverip1}:${port}/api`,
+    backendUrl:`http://${serverip1}:${port}`,
+    socketUrl : `ws://${serverip1}:${port}`,
 }
 
 // http://16.171.176.28/

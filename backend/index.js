@@ -17,7 +17,7 @@ initialize(server);
 
 const mongoose = require('mongoose');
 const {verifyToken} = require('./middleware/verifytoken')
-const PORT = 3000;
+const PORT = 5000;
 
 const vehicles = require('./routes/vehicles')
 const login = require('./routes/login')
@@ -51,8 +51,8 @@ const mongo = mongoose.connect(atlas)
   app.get('/',(req,res)=>{
     res.send("Heloo this is my Forst nodejs App on server")
   })
-app.use('/api', router);
-// app.use('/', router);
+// app.use('/api', router);
+app.use('/', router);
 router.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 router.use('/login',login)
 router.use(verifyToken);
